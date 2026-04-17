@@ -579,14 +579,22 @@ nav a:hover{color:var(--tx);background:var(--bg-2)}
 @keyframes marquee-run{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .partner-item{
   display:flex;align-items:center;justify-content:center;
-  padding:0 52px;height:72px;flex-shrink:0;
+  padding:0 32px;height:80px;flex-shrink:0;
 }
-.partner-item img{
-  height:32px;width:auto;object-fit:contain;
-  filter:grayscale(1) opacity(.4);
+.partner-logo{
+  display:flex;align-items:center;justify-content:center;
+  height:52px;padding:10px 20px;
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:var(--r-md);
+  transition:border-color .3s,background .3s;
+}
+.partner-item:hover .partner-logo{background:#fff;border-color:rgba(0,0,0,.1)}
+.partner-logo img{
+  height:24px;width:auto;max-width:110px;object-fit:contain;
+  filter:grayscale(1) opacity(.5);
   transition:filter .3s;
 }
-.partner-item img:hover{filter:grayscale(0) opacity(1)}
+.partner-item:hover .partner-logo img{filter:grayscale(0) opacity(1)}
 
 /* =============================================================
    CTA BANNER
@@ -1307,23 +1315,23 @@ footer{background:var(--dark);padding:64px 0 0}
   <div class="marquee-wrap">
     <div class="marquee-track" id="marquee-track">
       <!-- set 1 -->
-      <div class="partner-item"><img src="https://saelog.com/images/partners/balapan.jpg" alt="Balapan"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/vertex.jpg" alt="Vertex"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/alar-solutions.jpg" alt="Alar Solutions"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/pga-group.jpg" alt="PGA Group"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/standart.jpg" alt="Standart"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/europrom.jpg" alt="Europrom"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/bohmer.jpg" alt="Bohmer"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/tvcom.jpg" alt="TVCom"></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/balapan.jpg" alt="Balapan"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/vertex.jpg" alt="Vertex"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/alar-solutions.jpg" alt="Alar Solutions"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/pga-group.jpg" alt="PGA Group"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/standart.jpg" alt="Standart"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/europrom.jpg" alt="Europrom"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/bohmer.jpg" alt="Bohmer"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/tvcom.jpg" alt="TVCom"></div></div>
       <!-- set 2 (duplicate for seamless loop) -->
-      <div class="partner-item"><img src="https://saelog.com/images/partners/balapan.jpg" alt="Balapan"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/vertex.jpg" alt="Vertex"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/alar-solutions.jpg" alt="Alar Solutions"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/pga-group.jpg" alt="PGA Group"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/standart.jpg" alt="Standart"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/europrom.jpg" alt="Europrom"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/bohmer.jpg" alt="Bohmer"></div>
-      <div class="partner-item"><img src="https://saelog.com/images/partners/tvcom.jpg" alt="TVCom"></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/balapan.jpg" alt="Balapan"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/vertex.jpg" alt="Vertex"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/alar-solutions.jpg" alt="Alar Solutions"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/pga-group.jpg" alt="PGA Group"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/standart.jpg" alt="Standart"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/europrom.jpg" alt="Europrom"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/bohmer.jpg" alt="Bohmer"></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://saelog.com/images/partners/tvcom.jpg" alt="TVCom"></div></div>
     </div>
   </div>
 </section>
