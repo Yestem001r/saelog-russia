@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Услуги и сервис — Yumi_Stek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Services page specifics */
+.guarantee-banner {
+  background: var(--red-a08); border: 1.5px solid var(--bdr-red);
+  border-radius: var(--r-xl); padding: 36px 44px;
+  display: flex; align-items: center; gap: 24px;
+}
+.guarantee-banner-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--red); color: #fff; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.guarantee-banner h3 { font-size: 20px; color: var(--tx); margin-bottom: 6px; }
+.guarantee-banner p { font-size: 15px; color: var(--tx-2); line-height: 1.6; }
+
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.process-step {
+  border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 28px 24px;
+  background: var(--bg); position: relative; overflow: hidden;
+  transition: border-color 0.22s, box-shadow 0.22s;
+}
+.process-step:hover { border-color: var(--bdr-red); box-shadow: var(--sh-sm); }
+.step-number {
+  font-size: 52px; font-weight: 900; color: var(--red-a08);
+  letter-spacing: -3px; line-height: 1; position: absolute; top: 10px; right: 14px;
+}
+.process-step h4 { font-size: 15px; color: var(--tx); margin-bottom: 8px; position: relative; z-index: 1; }
+.process-step p { font-size: 13px; color: var(--tx-3); line-height: 1.6; position: relative; z-index: 1; }
+
+/* Kaspi highlight */
+.kaspi-block {
+  background: var(--black); border-radius: var(--r-xl); padding: 52px 56px;
+  display: flex; align-items: center; gap: 64px; position: relative; overflow: hidden;
+}
+.kaspi-block::before {
+  content: ''; position: absolute; right: -60px; top: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,25,44,0.15) 0%, transparent 70%);
+}
+.kaspi-text { flex: 1; position: relative; z-index: 1; }
+.kaspi-text h3 { font-size: 28px; color: #fff; margin-bottom: 14px; }
+.kaspi-text p { font-size: 16px; color: rgba(255,255,255,0.60); line-height: 1.65; max-width: 380px; }
+.kaspi-badge-group {
+  display: flex; flex-direction: column; gap: 12px;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.kaspi-badge {
+  padding: 14px 24px; border-radius: var(--r-lg);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  font-size: 15px; font-weight: 800; color: #fff; white-space: nowrap;
+  text-align: center;
+}
+.kaspi-badge em { color: var(--red); font-style: normal; }
+
+@media (max-width: 1024px) {
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .guarantee-banner { flex-direction: column; padding: 28px 24px; }
+  .kaspi-block { flex-direction: column; padding: 40px 32px; gap: 32px; }
+  .kaspi-badge-group { flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-logo">Yumi<em style="color:rgba(255,255,255,0.55)">_</em>Stek</div>
+</div>
+<div id="sp"></div>
+
+<header id="hdr">
+  <div class="container h-inner">
+    <a href="index.html" class="logo">Yumi<em>_</em>Stek</a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="services.html" class="active">Услуги</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="h-cta">
+      <a href="tel:+77783884801" class="h-phone">+7 (778) 388-48-01</a>
+      <a href="contacts.html" class="btn btn-red">Найти магазин</a>
+    </div>
+    <button class="ham" id="ham" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mob" id="mob">
+  <a href="index.html">Главная</a>
+  <a href="catalog.html">Каталог</a>
+  <a href="services.html">Услуги</a>
+  <a href="contacts.html">Контакты</a>
+  <span class="mob-phone">+7 (778) 388-48-01</span>
+</div>
+
+<!-- ─── PAGE HERO ─────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-inner">
+    <span class="badge badge-inv r" style="margin-bottom:20px">Сервис</span>
+    <h1 class="r r-delay-1">Услуги Yumi_Stek</h1>
+    <p class="r r-delay-2">Профессиональная установка, экспертные консультации и удобная оплата — в каждом нашем магазине.</p>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="sec-head r">
+      <span class="sec-label">Что мы предлагаем</span>
+      <h2>Сервис на уровне</h2>
+      <p>Мы не просто продаём аксессуары — мы делаем так, чтобы ваш смартфон был защищён правильно</p>
+    </div>
+    <div class="svc-grid">
+
+      <!-- Service 1 -->
+      <div class="svc-card r r-delay-1">
+        <div class="svc-head">
+          <div class="svc-num">01</div>
+          <h3>Профессиональная установка защиты</h3>
+          <p>Каждое стекло устанавливается мастером — в специальных условиях, без пыли и пузырьков.</p>
+        </div>
+        <div class="svc-body">
+          <div class="svc-list">
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Очистка экрана обезжиривающим составом
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Удаление пыли специальной камерой
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Точное позиционирование стекла
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Прокатка валиком — без пузырьков
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Проверка прилегания и качества
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="svc-card r r-delay-2">
+        <div class="svc-head">
+          <div class="svc-num">02</div>
+          <h3>Экспертные консультации</h3>
+          <p>Наши сотрудники знают устройства наизусть — помогут выбрать идеальный аксессуар.</p>
+        </div>
+        <div class="svc-body">
+          <div class="svc-list">
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Подбор чехла под конкретную модель
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Проверка совместимости чехла и стекла
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Рекомендации по типу защиты (активный / бережный стиль жизни)
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Подбор зарядного устройства по нагрузке
+            </div>
+            <div class="svc-item">
+              <div class="svc-check">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              Помощь с выбором аудио-аксессуаров
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Guarantee banner -->
+    <div class="guarantee-banner r" style="margin-top: 24px;">
+      <div class="guarantee-banner-icon">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h3>Гарантия установки</h3>
+        <p>Мы устанавливаем стекло без пыли и пузырьков — если результат вас не устроил, исправим бесплатно. Это наш стандарт качества, а не исключение из правил.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROCESS ───────────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="sec-head center r">
+      <span class="sec-label">Как это работает</span>
+      <h2>Установка стекла за 5 минут</h2>
+      <p>Простой, прозрачный процесс — от выбора до идеального результата</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step r r-delay-1">
+        <div class="step-number">1</div>
+        <h4>Выбираете стекло</h4>
+        <p>Консультант подберёт стекло именно под вашу модель смартфона — с полным покрытием или матовое.</p>
+      </div>
+      <div class="process-step r r-delay-2">
+        <div class="step-number">2</div>
+        <h4>Мастер готовит экран</h4>
+        <p>Экран обезжиривают, удаляют пыль. Вся процедура проходит в стерильных условиях.</p>
+      </div>
+      <div class="process-step r r-delay-3">
+        <div class="step-number">3</div>
+        <h4>Аккуратная установка</h4>
+        <p>Стекло накладывается точно по форме экрана. Прокатка валиком удаляет оставшийся воздух.</p>
+      </div>
+      <div class="process-step r r-delay-4">
+        <div class="step-number">4</div>
+        <h4>Проверка и выдача</h4>
+        <p>Мастер проверяет прилегание при вас. Никаких пузырьков — или делаем повторно бесплатно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ДОСТАВКА ──────────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="delivery-card r">
+      <div class="delivery-text">
+        <span class="sec-label" style="color:rgba(255,255,255,0.55);">Доставка</span>
+        <h3>Привезём прямо к вам</h3>
+        <p>Если вы находитесь далеко от наших магазинов — мы организуем доставку. Быстро, надёжно, без лишних хлопот.</p>
+        <div style="margin-top:24px;">
+          <a href="tel:+77783884801" class="btn btn-white">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            Уточнить условия
+          </a>
+        </div>
+      </div>
+      <div class="delivery-icon-block">
+        <svg width="52" height="52" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── СПОСОБЫ ОПЛАТЫ ────────────────────────────────────────────── -->
+<section id="payment" style="background: var(--bg-2);">
+  <div class="container">
+    <div class="sec-head center r">
+      <span class="sec-label">Оплата</span>
+      <h2>Как вам удобно — так и платите</h2>
+      <p>Принимаем все способы оплаты, доступные в Казахстане</p>
+    </div>
+    <div class="pay-grid">
+      <div class="pay-card r r-delay-1">
+        <div class="pay-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h4>Наличными</h4>
+        <p>Классическая оплата в кассе любого магазина сети.</p>
+      </div>
+      <div class="pay-card r r-delay-2">
+        <div class="pay-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h4>Банковской картой</h4>
+        <p>Visa, Mastercard, American Express — бесконтактно или с пин-кодом.</p>
+      </div>
+      <div class="pay-card r r-delay-3">
+        <div class="pay-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M18 14h.01M14 18h.01M18 18h.01"/></svg>
+        </div>
+        <h4>QR Kaspi.kz</h4>
+        <p>Моментальный перевод через приложение Kaspi — без комиссии.</p>
+      </div>
+      <div class="pay-card r r-delay-4">
+        <div class="pay-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h4>Kaspi Red — рассрочка 0%</h4>
+        <p>Рассрочка на 3, 6, 12 или 24 месяца. Одобрение за 1 минуту.</p>
+      </div>
+    </div>
+
+    <!-- Kaspi block -->
+    <div class="kaspi-block r" style="margin-top: 24px;">
+      <div class="kaspi-text">
+        <h3>Kaspi Red — рассрочка без переплат</h3>
+        <p>Оформите любой товар в рассрочку прямо в магазине. Никаких банков, никакого ожидания — только мгновенное одобрение в приложении Kaspi.</p>
+      </div>
+      <div class="kaspi-badge-group">
+        <div class="kaspi-badge"><em>0%</em> переплата</div>
+        <div class="kaspi-badge">До <em>24</em> месяцев</div>
+        <div class="kaspi-badge"><em>1 мин</em> одобрение</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="cta-banner r">
+      <div class="cta-text">
+        <div class="badge badge-inv" style="margin-bottom:20px">Приходите к нам</div>
+        <h2>Готовы установить стекло прямо сейчас?</h2>
+        <p>Найдите ближайший магазин Yumi_Stek — мы ждём вас и готовы помочь в течение нескольких минут.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contacts.html" class="btn btn-white btn-lg">Найти магазин</a>
+        <a href="catalog.html" class="btn btn-ghost-inv btn-lg">Смотреть каталог</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Yumi<em>_</em>Stek</div>
+        <p>Национальная сеть магазинов мобильных аксессуаров в Казахстане. Алматы, Астана, Шымкент, Талдыкорган, Караганда.</p>
+        <a href="tel:+77783884801" class="footer-phone">+7 (778) 388-48-01</a>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="services.html">Установка стекла</a>
+        <a href="services.html">Консультации</a>
+        <a href="services.html#payment">Способы оплаты</a>
+        <a href="services.html">Доставка</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+77783884801">+7 (778) 388-48-01</a>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener">@yumi_stek</a>
+        <a href="contacts.html">Наши магазины</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Yumi_Stek. Все права защищены.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/yumi_stek" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="tel:+77783884801" class="social-link" aria-label="Телефон">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('out'), 400));
+const sp = document.getElementById('sp');
+window.addEventListener('scroll', () => { const s = document.documentElement; sp.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100 + '%'; }, { passive: true });
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+const ham = document.getElementById('ham'), mob = document.getElementById('mob');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : ''; });
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = ''; }));
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

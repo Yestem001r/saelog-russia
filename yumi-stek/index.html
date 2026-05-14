@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yumi_Stek — Национальная сеть магазинов мобильных аксессуаров</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="ld-logo">Yumi<em style="color:rgba(255,255,255,0.55)">_</em>Stek</div>
+</div>
+
+<!-- Scroll progress -->
+<div id="sp"></div>
+
+<!-- Header -->
+<header id="hdr">
+  <div class="container h-inner">
+    <a href="index.html" class="logo">Yumi<em>_</em>Stek</a>
+    <nav>
+      <a href="index.html" class="active">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="services.html">Услуги</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="h-cta">
+      <a href="tel:+77783884801" class="h-phone">+7 (778) 388-48-01</a>
+      <a href="contacts.html" class="btn btn-red">Найти магазин</a>
+    </div>
+    <button class="ham" id="ham" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div class="mob" id="mob">
+  <a href="index.html">Главная</a>
+  <a href="catalog.html">Каталог</a>
+  <a href="services.html">Услуги</a>
+  <a href="contacts.html">Контакты</a>
+  <span class="mob-phone">+7 (778) 388-48-01</span>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+
+    <div class="hero-content">
+      <div class="hero-eyebrow r">
+        <span></span>
+        Работаем в 5 городах Казахстана
+      </div>
+      <h1 class="hero-h1 r r-delay-1">
+        Всё для<br>вашего<br><em>смартфона</em>
+      </h1>
+      <p class="hero-sub r r-delay-2">
+        Тысячи чехлов, защитных стекол и аксессуаров.
+        Профессиональная установка. Рассрочка Kaspi&nbsp;Red&nbsp;0%.
+      </p>
+      <div class="hero-actions r r-delay-3">
+        <a href="catalog.html" class="btn btn-white btn-lg">Смотреть каталог</a>
+        <a href="contacts.html" class="btn btn-ghost-inv btn-lg">Найти магазин</a>
+      </div>
+      <div class="hero-meta r r-delay-4">
+        <a href="tel:+77783884801">+7 (778) 388-48-01</a>
+        <span class="hero-sep">·</span>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener">@yumi_stek</a>
+        <span class="hero-sep">·</span>
+        <span>Kaspi Red 0%</span>
+      </div>
+    </div>
+
+    <div class="hero-visual r r-delay-2">
+      <div class="store-card">
+        <!-- floating product labels -->
+        <div class="sc-bubble sc-b1">🛡 Чехлы</div>
+        <div class="sc-bubble sc-b2">📱 Стёкла</div>
+        <div class="sc-bubble sc-b3">⚡ Зарядки</div>
+        <div class="sc-bubble sc-b4">🎧 Аудио</div>
+        <!-- centre branding -->
+        <div class="sc-center">
+          <div class="sc-logo">Yumi<em>_</em>Stek</div>
+          <div class="sc-tagline">мобильные аксессуары</div>
+        </div>
+        <div class="store-card-badge">📍 Алматы · Астана · Шымкент · ещё&nbsp;2</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">
+    <span>листать</span>
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+
+  <!-- Bottom stats bar -->
+  <div class="hero-stats">
+    <div class="hero-stat r">
+      <div class="hero-stat-n">10 000+</div>
+      <div class="hero-stat-l">наименований товаров</div>
+    </div>
+    <div class="hero-stat r r-delay-1">
+      <div class="hero-stat-n">5</div>
+      <div class="hero-stat-l">городов присутствия</div>
+    </div>
+    <div class="hero-stat r r-delay-2">
+      <div class="hero-stat-n">0%</div>
+      <div class="hero-stat-l">рассрочка Kaspi Red</div>
+    </div>
+    <div class="hero-stat r r-delay-3">
+      <div class="hero-stat-n">≈5 мин</div>
+      <div class="hero-stat-l">установка защитного стекла</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── О КОМПАНИИ ────────────────────────────────────────────────── -->
+<section id="about" style="background: var(--bg);">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text r">
+        <span class="sec-label">О компании</span>
+        <h2>Ведущий поставщик аксессуаров в Казахстане</h2>
+        <p>
+          Yumi_Stek — это национальная розничная сеть, объединяющая современные торговые точки
+          по всей стране. Мы специализируемся на аксессуарах для смартфонов: от защитных чехлов
+          до профессионального аудио и зарядных решений.
+        </p>
+        <p>
+          Наш фокус — максимально широкий ассортимент, оперативный сервис и экспертные
+          консультации. В каждом магазине работают специалисты, готовые подобрать
+          аксессуар именно под вашу модель устройства.
+        </p>
+        <div class="guarantee-row">
+          <div class="guarantee-item"><span class="g-dot"></span>Apple, Samsung, Xiaomi, POCO</div>
+          <div class="guarantee-item"><span class="g-dot"></span>Установка без пузырьков</div>
+          <div class="guarantee-item"><span class="g-dot"></span>Рассрочка Kaspi Red</div>
+        </div>
+      </div>
+
+      <div class="about-visual r r-delay-2">
+        <div class="about-card">
+          <div class="about-stat-row">
+            <div class="about-stat">
+              <div class="about-stat-n">10K+</div>
+              <div class="about-stat-l">Товаров в наличии</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-n">5</div>
+              <div class="about-stat-l">Городов сети</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-n">4</div>
+              <div class="about-stat-l">Топ-бренда покрыты</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-n">1</div>
+              <div class="about-stat-l">Контакт-центр</div>
+            </div>
+          </div>
+          <div class="mission-quote">
+            Обеспечить каждого пользователя качественными аксессуарами, сочетая оперативный сервис и комфортный процесс выбора в современных магазинах.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── НАШИ ГОРОДА ───────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="sec-head center r">
+      <span class="sec-label">Где нас найти</span>
+      <h2>Мы в 5 городах Казахстана</h2>
+      <p>Современные магазины в ключевых торговых локациях — всегда рядом с вами</p>
+    </div>
+    <div class="city-grid">
+      <div class="city-card r r-delay-1">
+        <div class="city-icon">🏙</div>
+        <div class="city-name">Алматы</div>
+        <div class="city-sub">Южная столица</div>
+      </div>
+      <div class="city-card r r-delay-2">
+        <div class="city-icon">🌆</div>
+        <div class="city-name">Астана</div>
+        <div class="city-sub">Столица РК</div>
+      </div>
+      <div class="city-card r r-delay-3">
+        <div class="city-icon">🏛</div>
+        <div class="city-name">Шымкент</div>
+        <div class="city-sub">Третий мегаполис</div>
+      </div>
+      <div class="city-card r r-delay-4">
+        <div class="city-icon">🌇</div>
+        <div class="city-name">Талдыкорган</div>
+        <div class="city-sub">Регион Алматы</div>
+      </div>
+      <div class="city-card r r-delay-5">
+        <div class="city-icon">🏗</div>
+        <div class="city-name">Караганда</div>
+        <div class="city-sub">Центральный Казахстан</div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:32px; font-size:14px; color:var(--tx-3); font-weight:600;" class="r">
+      Точные адреса филиалов — в 2ГИС или Яндекс.Карты: введите «Yumi Stek»
+    </p>
+  </div>
+</section>
+
+<!-- ─── АССОРТИМЕНТ ───────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="sec-head r">
+      <span class="sec-label">Ассортимент</span>
+      <h2>Всё для вашего смартфона</h2>
+      <p>Тысячи наименований для iPhone, Samsung, Xiaomi, POCO и других брендов</p>
+    </div>
+    <div class="cat-grid">
+      <a href="catalog.html#cases" class="cat-card r r-delay-1">
+        <div class="cat-icon-wrap">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Защитные чехлы</h3>
+        <p>Силиконовые, противоударные, кожаные и матовые. Более 10 000 вариантов в наличии.</p>
+        <div class="cat-count">10 000+ вариантов</div>
+        <div class="cat-arrow">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="catalog.html#glass" class="cat-card r r-delay-2">
+        <div class="cat-icon-wrap">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Защитные стекла и плёнки</h3>
+        <p>Стёкла 9D/11D с полным покрытием, матовые антибликовые, гидрогелевые плёнки.</p>
+        <div class="cat-count">Установка за 5 минут</div>
+        <div class="cat-arrow">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="catalog.html#audio" class="cat-card r r-delay-3">
+        <div class="cat-icon-wrap">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <h3>Аудио-аксессуары</h3>
+        <p>Проводные и беспроводные (TWS) наушники, портативные колонки и гарнитуры.</p>
+        <div class="cat-count">Все форматы</div>
+        <div class="cat-arrow">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="catalog.html#chargers" class="cat-card r r-delay-4">
+        <div class="cat-icon-wrap">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Зарядные устройства</h3>
+        <p>Адаптеры с быстрой зарядкой, кабели Lightning, USB-C, Micro-USB и беспроводные ЗУ.</p>
+        <div class="cat-count">Fast Charge поддержка</div>
+        <div class="cat-arrow">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="catalog.html#extras" class="cat-card r r-delay-5">
+        <div class="cat-icon-wrap">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <h3>Дополнительно</h3>
+        <p>Автомобильные держатели, кольца-держатели, карты памяти и сопутствующие товары.</p>
+        <div class="cat-count">Сотни позиций</div>
+        <div class="cat-arrow">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ПОЧЕМУ МЫ ─────────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="sec-head center r">
+      <span class="sec-label">Наши преимущества</span>
+      <h2>Почему выбирают Yumi_Stek</h2>
+      <p>Три причины, по которым нам доверяют тысячи покупателей по всему Казахстану</p>
+    </div>
+    <div class="feat-grid r">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Профессиональная установка</h3>
+        <p>Подготовленные мастера устанавливают защитные стёкла без пыли и пузырьков. Идеальное прилегание — гарантируем.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Экспертные консультации</h3>
+        <p>Наши сотрудники знают каждую модель устройства. Подберём аксессуар, который идеально совместим именно с вашим смартфоном.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>Рассрочка Kaspi Red 0%</h3>
+        <p>Оплачивайте удобно: наличными, картой, QR Kaspi или в рассрочку Kaspi Red. Никаких скрытых платежей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="cta-banner r">
+      <div class="cta-text">
+        <div class="badge badge-inv" style="margin-bottom:20px">Найдите нас рядом</div>
+        <h2>Ваш смартфон заслуживает лучшего</h2>
+        <p>Приходите в ближайший магазин Yumi_Stek — мы поможем подобрать всё, что нужно для вашего устройства.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contacts.html" class="btn btn-white btn-lg">Найти магазин</a>
+        <a href="tel:+77783884801" class="btn btn-ghost-inv btn-lg">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          Позвонить
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Yumi<em>_</em>Stek</div>
+        <p>Национальная сеть магазинов мобильных аксессуаров в Казахстане. Алматы, Астана, Шымкент, Талдыкорган, Караганда.</p>
+        <a href="tel:+77783884801" class="footer-phone">+7 (778) 388-48-01</a>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Товары</h4>
+        <a href="catalog.html#cases">Защитные чехлы</a>
+        <a href="catalog.html#glass">Стёкла и плёнки</a>
+        <a href="catalog.html#audio">Аудио</a>
+        <a href="catalog.html#chargers">Зарядные устройства</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+77783884801">+7 (778) 388-48-01</a>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener">@yumi_stek</a>
+        <a href="https://go.2gis.com" target="_blank" rel="noopener">Найти в 2ГИС</a>
+        <a href="services.html#payment">Способы оплаты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Yumi_Stek. Все права защищены.</p>
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a href="https://instagram.com/yumi_stek" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Phone -->
+        <a href="tel:+77783884801" class="social-link" aria-label="Телефон">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 400);
+});
+
+// Scroll progress
+const sp = document.getElementById('sp');
+window.addEventListener('scroll', () => {
+  const s = document.documentElement;
+  const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+  sp.style.width = pct + '%';
+}, { passive: true });
+
+// Header shadow
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+// Mobile menu
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
