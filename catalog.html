@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог товаров — Yumi_Stek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ─── Catalog-specific ─── */
+.cat-hero-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; }
+.brand-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.brand-pill {
+  padding: 7px 18px; border-radius: var(--r-pill);
+  border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.10);
+  font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.80);
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  cursor: pointer;
+}
+.brand-pill:hover, .brand-pill.on { background: #fff; border-color: #fff; color: var(--red); }
+.cat-section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+.cat-section:last-of-type { border-bottom: none; }
+.cat-sec-head { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; margin-bottom: 40px; }
+.cat-sec-icon { width: 64px; height: 64px; border-radius: var(--r-lg); background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cat-sec-text h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 6px; }
+.cat-sec-text p { font-size: 15px; color: var(--tx-2); }
+.item-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* Category nav */
+.cat-nav { position: sticky; top: 68px; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.cat-nav-inner { display: flex; gap: 0; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+.cat-nav-inner::-webkit-scrollbar { display: none; }
+.cat-nav-link { display: flex; align-items: center; gap: 8px; padding: 16px 20px; white-space: nowrap; font-size: 14px; font-weight: 700; color: var(--tx-2); border-bottom: 2px solid transparent; transition: color 0.18s, border-color 0.18s; }
+.cat-nav-link:hover { color: var(--tx); border-color: var(--gray-200); }
+.cat-nav-link.active { color: var(--red); border-color: var(--red); }
+
+/* Compat badges */
+.compat-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.compat-badge { padding: 3px 9px; border-radius: var(--r-pill); background: var(--gray-100); color: var(--tx-2); font-size: 11px; font-weight: 700; }
+
+@media (max-width: 768px) {
+  .cat-hero-inner { grid-template-columns: 1fr; }
+  .item-grid { grid-template-columns: 1fr 1fr; }
+  .cat-sec-head { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .item-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="ld-logo">Yumi<em style="color:rgba(255,255,255,0.55)">_</em>Stek</div></div>
+<div id="sp"></div>
+
+<header id="hdr">
+  <div class="container h-inner">
+    <a href="index.html" class="logo">Yumi<em>_</em>Stek</a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html" class="active">Каталог</a>
+      <a href="services.html">Услуги</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="h-cta">
+      <a href="tel:+77783884801" class="h-phone">+7 (778) 388-48-01</a>
+      <a href="contacts.html" class="btn btn-red">Найти магазин</a>
+    </div>
+    <button class="ham" id="ham" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mob" id="mob">
+  <a href="index.html">Главная</a>
+  <a href="catalog.html">Каталог</a>
+  <a href="services.html">Услуги</a>
+  <a href="contacts.html">Контакты</a>
+  <span class="mob-phone">+7 (778) 388-48-01</span>
+</div>
+
+<!-- ─── PAGE HERO ─────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-inner">
+    <div class="cat-hero-inner">
+      <div>
+        <span class="badge badge-inv r" style="margin-bottom:20px">Ассортимент</span>
+        <h1 class="r r-delay-1">Каталог товаров</h1>
+        <p class="r r-delay-2">Тысячи наименований для iPhone, Samsung, Xiaomi, POCO и других. Всё в наличии — прямо сейчас.</p>
+        <div class="brand-pills r r-delay-3">
+          <span class="brand-pill on">Все бренды</span>
+          <span class="brand-pill">Apple</span>
+          <span class="brand-pill">Samsung</span>
+          <span class="brand-pill">Xiaomi</span>
+          <span class="brand-pill">POCO</span>
+        </div>
+      </div>
+      <div class="r r-delay-2" style="text-align:right; flex-shrink:0;">
+        <div style="font-size:72px; font-weight:900; color:rgba(255,255,255,0.10); letter-spacing:-4px; line-height:1;">10K+</div>
+        <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.45); letter-spacing:0.5px;">наименований</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATEGORY NAV ──────────────────────────────────────────────── -->
+<div class="cat-nav">
+  <div class="container">
+    <div class="cat-nav-inner">
+      <a href="#cases" class="cat-nav-link active">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Чехлы
+      </a>
+      <a href="#glass" class="cat-nav-link">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Стёкла и плёнки
+      </a>
+      <a href="#audio" class="cat-nav-link">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Аудио
+      </a>
+      <a href="#chargers" class="cat-nav-link">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Зарядные
+      </a>
+      <a href="#extras" class="cat-nav-link">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>Дополнительно
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN CONTENT ──────────────────────────────────────────────── -->
+<div style="background: var(--bg);">
+  <div class="container">
+
+    <!-- ══ ЧЕХЛЫ ══════════════════════════════════════════════════════ -->
+    <div id="cases" class="cat-section">
+      <div class="cat-sec-head r">
+        <div class="cat-sec-icon">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="cat-sec-text">
+          <h2>Защитные чехлы</h2>
+          <p>Более 10 000 вариантов для любого бренда и любого вкуса.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(145deg,#E8192C,#9B0C17)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Хит продаж</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Силиконовый чехол</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Мягкий, приятный на ощупь. Защита от царапин и лёгких ударов. Десятки цветов.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span><span class="compat-badge">Xiaomi</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(155deg,#C5111F,#7A0D13)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="13"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Защита</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Противоударный чехол</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Двойная конструкция: силикон + жёсткий пластик. Выдерживает падения с 1.5 м.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span><span class="compat-badge">POCO</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(130deg,#111111,#2A1010)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Премиум</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Кожаный чехол</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Натуральная и искусственная кожа. Элегантный вид, слоты для карт.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(165deg,#E8192C,#C5111F)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Стиль</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Матовый чехол</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Не оставляет отпечатков. Тонкий профиль — ощущается как без чехла.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Xiaomi</span><span class="compat-badge">POCO</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(135deg,#1A1A1A,#111111)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="12" r="3" stroke-dasharray="3 2"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Прозрачный</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Clear Case</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Усиленный прозрачный чехол. Сохраняет оригинальный дизайн, защищает от ударов.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span><span class="compat-badge">Xiaomi</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(150deg,#9B0C17,#5C0710)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Книжка</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Флип-чехол</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Защита экрана и корпуса. Слоты для карт. Функция подставки.</div>
+            <div class="compat-row"><span class="compat-badge">Samsung</span><span class="compat-badge">Xiaomi</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ СТЁКЛА ══════════════════════════════════════════════════════ -->
+    <div id="glass" class="cat-section">
+      <div class="cat-sec-head r">
+        <div class="cat-sec-icon">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="cat-sec-text">
+          <h2>Защитные стёкла и плёнки</h2>
+          <p>Полное покрытие, кристальная чёткость, установка мастером прямо в магазине.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(145deg,#111111,#1E1E1E)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><rect x="7" y="4" width="10" height="16" rx="1" opacity="0.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Полное покрытие</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Стекло 9D / 11D</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Охватывает весь экран до края. Твёрдость 9H. Олеофобное покрытие.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span><span class="compat-badge">Xiaomi</span><span class="compat-badge">POCO</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(155deg,#1A1A2E,#111111)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="8" y1="8" x2="16" y2="8" stroke-dasharray="2 2"/><line x1="8" y1="12" x2="16" y2="12" stroke-dasharray="2 2"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Антибликовое</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Матовое стекло</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Устраняет блики на улице и при ярком освещении. Комфорт для глаз.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(140deg,#0F0F1A,#1A0A26)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 12 Q12 8 16 12 Q12 16 8 12" opacity="0.7"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Гибкое</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Гидрогелевая плёнка</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Самовосстанавливающееся покрытие. Повторяет изгибы экрана. Не теряет прозрачности.</div>
+            <div class="compat-row"><span class="compat-badge">Все модели</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(165deg,#111111,#0D0D0D)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 2 L9 22" opacity="0.4"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Конфиденциальность</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Privacy Glass</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Экран виден только смотрящему прямо. Идеально для работы в транспорте.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(135deg,#1E1E1E,#111111)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><rect x="7" y="13" width="10" height="8" rx="1"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Камера</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Защита для камеры</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Стеклянная накладка на модуль камеры. Не влияет на качество фото — проверено.</div>
+            <div class="compat-row"><span class="compat-badge">iPhone</span><span class="compat-badge">Samsung</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(150deg,#E8192C,#9B0C17)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Сервис</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Профессиональная установка</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Мастер устанавливает стекло в специальной камере. Без пыли, без пузырьков — гарантируем.</div>
+            <div class="compat-row"><span class="compat-badge">Бесплатно при покупке</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ АУДИО ════════════════════════════════════════════════════════ -->
+    <div id="audio" class="cat-section">
+      <div class="cat-sec-head r">
+        <div class="cat-sec-icon">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div class="cat-sec-text">
+          <h2>Аудио-аксессуары</h2>
+          <p>Звук, который захватывает — от проводных гарнитур до портативных колонок.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(145deg,#111111,#1A0A1A)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Беспроводные</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">TWS наушники</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Полностью беспроводные. Активное шумоподавление, до 6 ч на одном заряде, зарядный кейс.</div>
+            <div class="compat-row"><span class="compat-badge">Bluetooth 5.0+</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(155deg,#0D0D0D,#1A1A1A)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/><line x1="12" y1="10" x2="12" y2="22" opacity="0.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Проводные</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Вакуумные наушники</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Lightning, USB-C и 3.5 мм. Чистый звук без задержки. Встроенный микрофон.</div>
+            <div class="compat-row"><span class="compat-badge">Lightning</span><span class="compat-badge">USB-C</span><span class="compat-badge">3.5 мм</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(140deg,#1A0A1E,#0D0D0D)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><circle cx="9" cy="14" r="1" fill="rgba(255,255,255,0.75)"/><circle cx="15" cy="14" r="1" fill="rgba(255,255,255,0.75)"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Портативная</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Bluetooth-колонка</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Компактная, водонепроницаемая. До 24 ч автономной работы. Мощный объёмный звук.</div>
+            <div class="compat-row"><span class="compat-badge">Bluetooth 5.0</span><span class="compat-badge">IPX5</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ ЗАРЯДНЫЕ ════════════════════════════════════════════════════ -->
+    <div id="chargers" class="cat-section">
+      <div class="cat-sec-head r">
+        <div class="cat-sec-icon">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="cat-sec-text">
+          <h2>Зарядные устройства</h2>
+          <p>Быстрая зарядка, нужный разъём, максимальная надёжность.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(145deg,#E8192C,#C5111F)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Быстрая зарядка</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Сетевой адаптер Fast Charge</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Поддержка QC 3.0 / PD 3.0. До 65 Вт. Зарядит телефон за 30 минут до 80%.</div>
+            <div class="compat-row"><span class="compat-badge">USB-C</span><span class="compat-badge">USB-A</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(155deg,#9B0C17,#5C0710)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 8v2M12 14v2M8 12h2M14 12h2" opacity="0.6"/><circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.3)"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Беспроводная</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Беспроводная зарядка</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Qi-совместимая. 15 Вт для поддерживаемых устройств. Положил — зарядилось.</div>
+            <div class="compat-row"><span class="compat-badge">Qi</span><span class="compat-badge">MagSafe-совм.</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(140deg,#C5111F,#7A0D13)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14" opacity="0.5"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Кабели</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Зарядные кабели</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Lightning, USB-C, Micro-USB. Нейлоновое плетение для долговечности. 1–3 м.</div>
+            <div class="compat-row"><span class="compat-badge">Lightning</span><span class="compat-badge">USB-C</span><span class="compat-badge">Micro-USB</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ ДОПОЛНИТЕЛЬНО ═══════════════════════════════════════════════ -->
+    <div id="extras" class="cat-section">
+      <div class="cat-sec-head r">
+        <div class="cat-sec-icon">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <div class="cat-sec-text">
+          <h2>Дополнительные аксессуары</h2>
+          <p>Всё, что делает жизнь со смартфоном удобнее — от держателя до карты памяти.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+
+        <div class="item-card r r-delay-1">
+          <div class="item-img" style="background:linear-gradient(145deg,#111111,#1A1010)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">В авто</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Автомобильный держатель</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Магнитное крепление или зажим. Надёжно фиксирует телефон при езде.</div>
+            <div class="compat-row"><span class="compat-badge">Все смартфоны</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-2">
+          <div class="item-img" style="background:linear-gradient(155deg,#1A1A1A,#0D0D0D)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2" opacity="0.5"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Удобство</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Кольцо-держатель</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">Надёжный хват одной рукой. Подставка для видео. Совместимо с чехлами.</div>
+            <div class="compat-row"><span class="compat-badge">Универсальный</span></div>
+          </div>
+        </div>
+
+        <div class="item-card r r-delay-3">
+          <div class="item-img" style="background:linear-gradient(140deg,#111111,#1A1A1A)">
+            <svg class="item-img-icon" width="56" height="56" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><rect x="6" y="9" width="12" height="6" rx="1" opacity="0.5"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <div class="item-body">
+            <div style="font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red)">Хранение</div>
+            <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.3">Карты памяти MicroSD</div>
+            <div style="font-size:13px;color:var(--tx-3);line-height:1.55">От 32 до 512 ГБ. Высокая скорость чтения/записи. Для фото, видео и данных.</div>
+            <div class="compat-row"><span class="compat-badge">Class 10</span><span class="compat-badge">UHS-I</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="cta-banner r">
+      <div class="cta-text">
+        <div class="badge badge-inv" style="margin-bottom:20px">Нужна помощь?</div>
+        <h2>Не нашли нужный аксессуар?</h2>
+        <p>Позвоните нам или приходите в магазин — найдём аксессуар для любой модели устройства.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+77783884801" class="btn btn-white btn-lg">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          Позвонить
+        </a>
+        <a href="contacts.html" class="btn btn-ghost-inv btn-lg">Найти магазин</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Yumi<em>_</em>Stek</div>
+        <p>Национальная сеть магазинов мобильных аксессуаров в Казахстане. Алматы, Астана, Шымкент, Талдыкорган, Караганда.</p>
+        <a href="tel:+77783884801" class="footer-phone">+7 (778) 388-48-01</a>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Товары</h4>
+        <a href="#cases">Защитные чехлы</a>
+        <a href="#glass">Стёкла и плёнки</a>
+        <a href="#audio">Аудио</a>
+        <a href="#chargers">Зарядные</a>
+        <a href="#extras">Дополнительно</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+77783884801">+7 (778) 388-48-01</a>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener">@yumi_stek</a>
+        <a href="services.html#payment">Способы оплаты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Yumi_Stek. Все права защищены.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/yumi_stek" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="tel:+77783884801" class="social-link" aria-label="Телефон">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('out'), 400));
+const sp = document.getElementById('sp');
+window.addEventListener('scroll', () => { const s = document.documentElement; sp.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100 + '%'; }, { passive: true });
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+const ham = document.getElementById('ham'), mob = document.getElementById('mob');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : ''; });
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = ''; }));
+
+// Sticky category nav active state
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.cat-nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.getAttribute('id'); });
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+// Brand pills (cosmetic)
+document.querySelectorAll('.brand-pill').forEach(p => {
+  p.addEventListener('click', () => { document.querySelectorAll('.brand-pill').forEach(x => x.classList.remove('on')); p.classList.add('on'); });
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

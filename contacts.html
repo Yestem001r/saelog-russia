@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — Yumi_Stek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Contacts specifics */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+.social-card {
+  border: 1.5px solid var(--border); border-radius: var(--r-xl); padding: 44px 48px;
+  display: flex; align-items: center; gap: 28px;
+  transition: border-color 0.22s, box-shadow 0.28s, transform 0.28s;
+}
+.social-card:hover {
+  border-color: var(--bdr-red);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
+}
+.social-card-icon {
+  width: 64px; height: 64px; border-radius: var(--r-lg);
+  background: var(--red); color: #fff; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.social-card-text h3 { font-size: 22px; color: var(--tx); margin-bottom: 6px; }
+.social-card-text p { font-size: 14px; color: var(--tx-2); margin-bottom: 16px; line-height: 1.55; }
+.social-card-handle {
+  font-size: 18px; font-weight: 900; color: var(--red); letter-spacing: -0.5px;
+  display: flex; align-items: center; gap: 8px;
+}
+.social-card-handle svg { color: var(--red); }
+
+.city-detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.city-detail-card {
+  border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 28px 24px;
+  background: var(--bg); transition: border-color 0.22s, box-shadow 0.22s, transform 0.28s;
+}
+.city-detail-card:hover {
+  border-color: var(--bdr-red);
+  box-shadow: var(--sh-sm);
+  transform: translateY(-3px);
+}
+.city-detail-name { font-size: 20px; font-weight: 900; color: var(--tx); margin-bottom: 6px; letter-spacing: -0.5px; }
+.city-detail-desc { font-size: 13px; color: var(--tx-3); margin-bottom: 20px; line-height: 1.5; }
+.city-detail-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.city-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--r-pill);
+  border: 1.5px solid var(--border); background: var(--bg);
+  font-size: 12px; font-weight: 700; color: var(--tx-2);
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.city-link:hover { border-color: var(--red); color: var(--red); background: var(--red-a08); }
+
+.hours-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+.hours-card {
+  border: 1.5px solid var(--border); border-radius: var(--r-md); padding: 22px 20px;
+  background: var(--bg);
+}
+.hours-card h4 { font-size: 14px; color: var(--tx); margin-bottom: 6px; }
+.hours-card p { font-size: 13px; color: var(--tx-3); line-height: 1.55; }
+.hours-card .hours-time { font-size: 22px; font-weight: 900; color: var(--red); letter-spacing: -0.8px; margin-bottom: 4px; }
+
+@media (max-width: 1024px) {
+  .city-detail-grid { grid-template-columns: repeat(2, 1fr); }
+  .hours-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .social-card { flex-direction: column; align-items: flex-start; padding: 32px 28px; }
+  .city-detail-grid { grid-template-columns: 1fr; }
+  .hours-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-logo">Yumi<em style="color:rgba(255,255,255,0.55)">_</em>Stek</div>
+</div>
+<div id="sp"></div>
+
+<header id="hdr">
+  <div class="container h-inner">
+    <a href="index.html" class="logo">Yumi<em>_</em>Stek</a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="services.html">Услуги</a>
+      <a href="contacts.html" class="active">Контакты</a>
+    </nav>
+    <div class="h-cta">
+      <a href="tel:+77783884801" class="h-phone">+7 (778) 388-48-01</a>
+      <a href="tel:+77783884801" class="btn btn-red">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        Позвонить
+      </a>
+    </div>
+    <button class="ham" id="ham" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mob" id="mob">
+  <a href="index.html">Главная</a>
+  <a href="catalog.html">Каталог</a>
+  <a href="services.html">Услуги</a>
+  <a href="contacts.html">Контакты</a>
+  <span class="mob-phone">+7 (778) 388-48-01</span>
+</div>
+
+<!-- ─── PAGE HERO ─────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-inner">
+    <span class="badge badge-inv r" style="margin-bottom:20px">Мы рядом</span>
+    <h1 class="r r-delay-1">Свяжитесь с нами</h1>
+    <p class="r r-delay-2">Единый контакт-центр, Instagram и точные адреса магазинов в 5 городах Казахстана.</p>
+  </div>
+</section>
+
+<!-- ─── MAIN CONTACT ──────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Phone block -->
+      <div class="contact-block r">
+        <div>
+          <span class="sec-label">Единый контакт-центр</span>
+          <a href="tel:+77783884801" class="contact-phone">+7 (778) 388-48-01</a>
+        </div>
+        <p style="font-size:15px; color:var(--tx-2); line-height:1.65;">
+          Наш контакт-центр ответит на любые вопросы: наличие товаров, адреса магазинов,
+          условия рассрочки и услуги установки.
+        </p>
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <div class="contact-meta-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <span>Пн–Вс, 9:00–21:00</span>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            </div>
+            <span>Звонок бесплатный</span>
+          </div>
+        </div>
+        <a href="tel:+77783884801" class="btn btn-red btn-lg" style="align-self:flex-start;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          Позвонить сейчас
+        </a>
+      </div>
+
+      <!-- Social block -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener" class="social-card r r-delay-1">
+          <div class="social-card-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div class="social-card-text">
+            <h3>Instagram</h3>
+            <p>Новинки, акции и жизнь магазинов — подписывайтесь, чтобы ничего не пропустить.</p>
+            <div class="social-card-handle">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              @yumi_stek
+            </div>
+          </div>
+        </a>
+
+        <!-- Map tip -->
+        <div class="map-tip r r-delay-2">
+          <div class="map-tip-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <p>
+              <strong>Как нас найти:</strong> воспользуйтесь картами
+              <strong>2ГИС</strong> или <strong>Яндекс.Карты</strong> и введите в поиске
+              «Yumi Stek» — все актуальные адреса магазинов в вашем городе.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── ГОРОДА ────────────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="sec-head r">
+      <span class="sec-label">Наши магазины</span>
+      <h2>Мы работаем в 5 городах</h2>
+      <p>Найдите ближайший магазин — адреса в 2ГИС и Яндекс.Картах</p>
+    </div>
+    <div class="city-detail-grid">
+      <div class="city-detail-card r r-delay-1">
+        <div class="city-detail-name">🏙 Алматы</div>
+        <div class="city-detail-desc">Южная столица. Несколько точек в популярных торговых центрах города.</div>
+        <div class="city-detail-links">
+          <a href="https://go.2gis.com" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2ГИС
+          </a>
+          <a href="https://yandex.kz/maps" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Яндекс.Карты
+          </a>
+        </div>
+      </div>
+      <div class="city-detail-card r r-delay-2">
+        <div class="city-detail-name">🌆 Астана</div>
+        <div class="city-detail-desc">Столица Республики Казахстан. Магазины в ведущих ТРЦ города.</div>
+        <div class="city-detail-links">
+          <a href="https://go.2gis.com" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2ГИС
+          </a>
+          <a href="https://yandex.kz/maps" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Яндекс.Карты
+          </a>
+        </div>
+      </div>
+      <div class="city-detail-card r r-delay-3">
+        <div class="city-detail-name">🏛 Шымкент</div>
+        <div class="city-detail-desc">Третий мегаполис страны. Удобные локации в центре города и ТРЦ.</div>
+        <div class="city-detail-links">
+          <a href="https://go.2gis.com" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2ГИС
+          </a>
+          <a href="https://yandex.kz/maps" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Яндекс.Карты
+          </a>
+        </div>
+      </div>
+      <div class="city-detail-card r r-delay-4">
+        <div class="city-detail-name">🌇 Талдыкорган</div>
+        <div class="city-detail-desc">Административный центр Жетысуской области. Обслуживаем весь регион.</div>
+        <div class="city-detail-links">
+          <a href="https://go.2gis.com" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2ГИС
+          </a>
+          <a href="https://yandex.kz/maps" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Яндекс.Карты
+          </a>
+        </div>
+      </div>
+      <div class="city-detail-card r r-delay-5">
+        <div class="city-detail-name">🏗 Караганда</div>
+        <div class="city-detail-desc">Индустриальный центр Центрального Казахстана. Магазин в центре города.</div>
+        <div class="city-detail-links">
+          <a href="https://go.2gis.com" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2ГИС
+          </a>
+          <a href="https://yandex.kz/maps" target="_blank" rel="noopener" class="city-link">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Яндекс.Карты
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOURS ─────────────────────────────────────────────────────── -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="sec-head center r">
+      <span class="sec-label">Режим работы</span>
+      <h2>Работаем каждый день</h2>
+      <p>Большинство магазинов открыты без выходных — уточняйте у конкретной точки</p>
+    </div>
+    <div class="hours-row r">
+      <div class="hours-card">
+        <div class="hours-time">9:00 – 21:00</div>
+        <h4>Будни (Пн–Пт)</h4>
+        <p>Полный рабочий день. Мастера по установке стёкол работают в течение всего дня.</p>
+      </div>
+      <div class="hours-card">
+        <div class="hours-time">10:00 – 20:00</div>
+        <h4>Выходные (Сб–Вс)</h4>
+        <p>Работаем и в выходные — за аксессуарами или установкой стекла.</p>
+      </div>
+      <div class="hours-card">
+        <div class="hours-time">+7 (778) 388-48-01</div>
+        <h4>Контакт-центр</h4>
+        <p>Звоните в любое время — уточним точные часы работы вашего магазина.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section style="background: var(--bg-2);">
+  <div class="container">
+    <div class="cta-banner r">
+      <div class="cta-text">
+        <div class="badge badge-inv" style="margin-bottom:20px">Готовы помочь</div>
+        <h2>Есть вопросы? Позвоните нам</h2>
+        <p>Или подписывайтесь на наш Instagram — там всегда актуальные новости, акции и жизнь магазинов.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+77783884801" class="btn btn-white btn-lg">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          Позвонить
+        </a>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener" class="btn btn-ghost-inv btn-lg">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @yumi_stek
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Yumi<em>_</em>Stek</div>
+        <p>Национальная сеть магазинов мобильных аксессуаров в Казахстане. Алматы, Астана, Шымкент, Талдыкорган, Караганда.</p>
+        <a href="tel:+77783884801" class="footer-phone">+7 (778) 388-48-01</a>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="services.html">Услуги</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Города</h4>
+        <a href="#cities">Алматы</a>
+        <a href="#cities">Астана</a>
+        <a href="#cities">Шымкент</a>
+        <a href="#cities">Талдыкорган</a>
+        <a href="#cities">Караганда</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+77783884801">+7 (778) 388-48-01</a>
+        <a href="https://instagram.com/yumi_stek" target="_blank" rel="noopener">@yumi_stek</a>
+        <a href="services.html#payment">Способы оплаты</a>
+        <a href="services.html">Услуги</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Yumi_Stek. Все права защищены.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/yumi_stek" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="tel:+77783884801" class="social-link" aria-label="Телефон">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('out'), 400));
+const sp = document.getElementById('sp');
+window.addEventListener('scroll', () => { const s = document.documentElement; sp.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100 + '%'; }, { passive: true });
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+const ham = document.getElementById('ham'), mob = document.getElementById('mob');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : ''; });
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = ''; }));
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
